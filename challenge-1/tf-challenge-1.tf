@@ -9,12 +9,14 @@
 # it accordingly. 
 # added required_providers. It isn't really needed, since by default you will
 # use the latest version, but it was mentioned so probably expected. 
-
+# corrected from solution :They did want to include the no-op digital ocean 
+# provider as well, even though we're not using it. What they were trying to 
+# do is show that the old style of declaring a provider would not work with
+# non-official providers such as digital ocean. 
 terraform {
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.56.1"
+    digitalocean = {
+      source = "digitalocean/digitalocean"
     }
   }
 }
