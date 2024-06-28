@@ -7,6 +7,18 @@
 # https://registry.terraform.io/providers/hashicorp/aws/5.56.1/docs/resources/eip
 # to determine what the old terraform script was attempting to do, and upgrade 
 # it accordingly. 
+# added required_providers. It isn't really needed, since by default you will
+# use the latest version, but it was mentioned so probably expected. 
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.56.1"
+    }
+  }
+}
+
 provider "aws" {
 region = "us-east-1"
 }
