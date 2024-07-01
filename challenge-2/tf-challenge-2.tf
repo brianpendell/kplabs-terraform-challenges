@@ -11,9 +11,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-variable "splunk" {
-  default = "8088"
-}
 resource "aws_security_group" "security_group_payment_app" {
   name        = "payment_app"
     description = "Application Security Group"
@@ -44,16 +41,16 @@ resource "aws_security_group" "security_group_payment_app" {
     protocol         = "tcp"
        cidr_blocks      = ["${aws_eip.example.public_ip}/32"]
   }
-}
  egress {
     from_port        = var.splunk
     to_port          = var.splunk
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
-  }
+  }  
+}
 
 
 
 resource "aws_eip" "example" {
-   domain = "vpc"
+     vpc      = true
 }
