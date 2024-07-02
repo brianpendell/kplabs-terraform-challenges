@@ -7,3 +7,12 @@ variable "instance_config" {
   }
 }
 
+resource  "aws_instance" "first_ec2" {
+  for_each = var.instance_config 
+   tags = {
+    Name = each.key
+  }
+  instance_type = each.value.instance_type
+  ami = each.value.ami
+}
+
